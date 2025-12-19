@@ -25,6 +25,15 @@ app.use(cors({
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
 
+app.get('/', (req, res) => {
+  res.send('TaskFlow API is running');
+});
+
+app.get('/api', (req, res) => {
+  res.json({ message: 'TaskFlow API base route working' });
+});
+
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ message: "Something broke!" });
