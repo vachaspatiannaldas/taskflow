@@ -7,4 +7,4 @@ connectDB();
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
     console.log(`Test Login: POST http://localhost:${PORT}/api/auth/login`);
-});
+}); 
