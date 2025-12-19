@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-    origin: 'https://taskflow-kohl-three.vercel.app/',
+    origin: 'https://taskflow-kohl-three.vercel.app',
     credentials: true
 }));
 
