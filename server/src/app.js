@@ -12,14 +12,14 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-//MIDDLEWARE
-app.use(express.json());
-app.use(cookieParser());
-
 app.use(cors({
     origin: 'https://taskflow-kohl-three.vercel.app',
     credentials: true
 }));
+
+//MIDDLEWARE
+app.use(express.json());
+app.use(cookieParser());
 
 //Routes
 app.use('/api/auth', authRoutes);
