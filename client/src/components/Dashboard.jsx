@@ -8,7 +8,7 @@ const WeekPlanner = lazy(() => import('./WeekPlanner'));
 const MonthPlanner = lazy(() => import('./MonthPlanner'));
 import { useMemo } from 'react';
 
-import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { DndContext, closestCenter, PointerSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core';
 import {
   SortableContext,
   verticalListSortingStrategy,
@@ -122,8 +122,13 @@ const Dashboard = () => {
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
-        delay: 300,
-        tolerance: 8,
+        distance: 8,
+      },
+    }),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 250,
+        tolerance: 5
       },
     })
   );

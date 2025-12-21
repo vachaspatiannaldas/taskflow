@@ -14,6 +14,7 @@ const SortableTask = memo(({ task, children }) => {
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    touchAction: 'none',
   };
 
   return (
@@ -31,7 +32,11 @@ const SortableTask = memo(({ task, children }) => {
         <div className="flex-1">{children}</div>
       </div>
 
-      <div className="sm:hidden">
+      <div
+        className="sm:hidden"
+        {...attributes}
+        {...listeners}
+      >
         {children}
       </div>
     </li>
