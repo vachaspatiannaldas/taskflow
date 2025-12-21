@@ -35,6 +35,15 @@ const Register = () => {
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="w-full max-w-sm bg-white rounded-xl shadow p-6">
+
+        <div className="flex justify-center mb-4">
+          <img
+            src="/logo-dark.png"
+            alt="TaskFlow logo"
+            className="h-10 object-contain"
+          />
+        </div>
+
         <h2 className="text-xl font-semibold text-center mb-4">
           Create account
         </h2>

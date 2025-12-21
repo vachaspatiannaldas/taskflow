@@ -17,10 +17,11 @@ const Navbar = ({ user }) => {
       <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
 
         <div className="flex items-center gap-2">
-          <span className="text-xl">✅</span>
-          <h1 className="font-semibold text-lg text-slate-800 dark:text-slate-100">
-            TaskFlow
-          </h1>
+          <img
+            src={dark ? '/logo-dark.png' : '/logo-light.png'}
+            alt="TaskFlow Logo"
+            className="h-6 w-auto"
+          />
         </div>
 
         <div className="hidden sm:flex items-center gap-4">
