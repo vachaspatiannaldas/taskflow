@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../api/axios';
 import useDarkMode from '../hooks/useDarkMode';
 
 const Navbar = ({ user }) => {
@@ -9,7 +8,7 @@ const Navbar = ({ user }) => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    await api.post('/auth/logout');
+    localStorage.removeItem('token');
     navigate('/login');
   };
 

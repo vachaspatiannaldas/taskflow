@@ -3,7 +3,7 @@
 TaskFlow is a full-stack task management (Todo) application built using the **MERN stack**.  
 It focuses on **clean UI, real-world usability, and performance-optimized React patterns**.
 
-This project demonstrates practical frontend and backend engineering skills such as authentication, state management, responsive design, and API integration.
+This project demonstrates practical frontend and backend engineering skills such as authentication, state management, responsive design, API integration, and deployment.
 
 ---
 
@@ -12,18 +12,19 @@ This project demonstrates practical frontend and backend engineering skills such
 ### Authentication
 - User registration & login
 - Secure password hashing using **bcrypt**
-- JWT authentication stored in **httpOnly cookies**
-- Protected routes with middleware
+- JWT-based authentication using **Authorization Header (Bearer Token)**
+- Protected API routes using middleware
+- Stateless authentication (no server-side sessions)
 
 ### Task Management
 - Create, edit, delete tasks
 - Mark tasks as completed or pending
 - Inline task editing (double-click to edit)
-- Disable past dates when setting due date
+- Disable past dates when setting due dates
 
 ### Priority & Status
 - Task priority: **High / Medium / Low**
-- Status filter: **All / Pending / Completed**
+- Status filters: **All / Pending / Completed**
 - Priority-based filtering
 
 ### Multiple Views
@@ -34,9 +35,9 @@ This project demonstrates practical frontend and backend engineering skills such
 
 ### Search & UX
 - Search tasks by title
-- Responsive UI (mobile & desktop)
+- Fully responsive UI (mobile & desktop)
 - Dark mode support
-- Clean, minimal design
+- Clean, minimal, user-friendly design
 
 ### Performance Optimizations
 - `React.memo` for task items
@@ -62,4 +63,24 @@ This project demonstrates practical frontend and backend engineering skills such
 - MongoDB + Mongoose
 - JWT (JSON Web Tokens)
 - bcryptjs
-- Cookie-based authentication
+
+---
+
+## Security Practices Used
+- Password hashing with **bcrypt**
+- JWT authentication using **Bearer tokens**
+- Authorization header-based route protection
+- No sensitive data stored in cookies
+- Stateless backend authentication
+- Input validation on backend APIs
+
+---
+
+## What This Project Demonstrates
+- Full-stack MERN application development
+- RESTful API design & integration
+- Secure authentication using JWT
+- Responsive UI & UX-focused design
+- Performance optimization with React hooks
+- Clean, modular, maintainable codebase
+- Real-world deployment considerations (Vercel + Render)
