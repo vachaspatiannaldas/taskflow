@@ -18,7 +18,7 @@ const Navbar = ({ user }) => {
 
         <div className="flex items-center gap-2">
           <img
-            src={dark ? '/logo-dark.png' : '/logo-light.png'}
+            src={dark ? '/logo-light.png' : '/logo-dark.png'}
             alt="TaskFlow Logo"
             className="h-6 w-auto"
           />
