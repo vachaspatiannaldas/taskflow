@@ -8,7 +8,7 @@ const WeekPlanner = lazy(() => import('./WeekPlanner'));
 const MonthPlanner = lazy(() => import('./MonthPlanner'));
 import { useMemo } from 'react';
 
-import { DndContext, closestCenter } from '@dnd-kit/core';
+import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import {
   SortableContext,
   verticalListSortingStrategy,
@@ -119,6 +119,14 @@ const Dashboard = () => {
   }, [tasks, filter, priorityFilter, search]);
 
 
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        delay: 250,
+        tolerance: 5,
+      },
+    })
+  );
 
 
   return (
@@ -266,6 +274,7 @@ const Dashboard = () => {
         {view === 'list'  && (
 
         <DndContext
+          sensors={sensors}
           collisionDetection={closestCenter}
           onDragEnd={({ active, over }) => {
             if (!over || active.id === over.id) return;
@@ -302,6 +311,7 @@ const Dashboard = () => {
                         <input
                           type="checkbox"
                           checked={task.isCompleted}
+                          onPointerDown={(e) => e.stopPropagation()} 
                           onChange={() =>
                             toggleTask(task._id, task.isCompleted)
                           }
@@ -349,6 +359,7 @@ const Dashboard = () => {
                       </div>
 
                       <button
+                        onPointerDown={(e) => e.stopPropagation()}
                         onClick={() => deleteTask(task._id)}
                         className="text-rose-500"
                       >

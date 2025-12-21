@@ -31,12 +31,7 @@ const SortableTask = memo(({ task, children }) => {
         <div className="flex-1">{children}</div>
       </div>
 
-      <div
-        className="sm:hidden"
-        {...attributes}
-        {...listeners}
-        style={{ touchAction: 'none' }}
-      >
+      <div className="sm:hidden">
         {children}
       </div>
     </li>
