@@ -14,24 +14,28 @@ const SortableTask = memo(({ task, children }) => {
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    touchAction: 'none',
   };
 
   return (
     <li
       ref={setNodeRef}
       style={style}
-      className="flex gap-2"
+      {...attributes}
+      {...listeners}
+      className="rounded-lg"
     >
-      <div
-        {...attributes}
-        {...listeners}
-        className="cursor-grab text-slate-400 hover:text-slate-600 pt-6"
-        title="Drag task"
-      >
-        ☰
+      <div className="hidden sm:flex items-start gap-2">
+        <span
+          className="cursor-grab text-slate-400 hover:text-slate-600 pt-5"
+          title="Drag task"
+        >
+          ☰
+        </span>
+        <div className="flex-1">{children}</div>
       </div>
 
-      <div className="flex-1">
+      <div className="sm:hidden">
         {children}
       </div>
     </li>

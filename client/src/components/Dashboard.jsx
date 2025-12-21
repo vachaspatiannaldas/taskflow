@@ -42,7 +42,6 @@ const Dashboard = () => {
   const [editText, setEditText] = useState('');
   const [view, setView] = useState('list');
 
-  /* ---------------- Persist UI state ---------------- */
   useEffect(() => {
     localStorage.setItem('taskFilter', filter);
   }, [filter]);
@@ -55,7 +54,6 @@ const Dashboard = () => {
     localStorage.setItem('taskPriority', priorityFilter);
   }, [priorityFilter]);
 
-  /* ---------------- Load user + tasks ---------------- */
   useEffect(() => {
     const load = async () => {
       try {
@@ -71,7 +69,6 @@ const Dashboard = () => {
     load();
   }, []);
 
-  /* ---------------- Task Actions ---------------- */
   const addTask = async (e) => {
     e.preventDefault();
     if (!newTask.trim()) return;
@@ -109,7 +106,6 @@ const Dashboard = () => {
     setEditingId(null);
   };
 
-  /* ---------------- Filtering ---------------- */
   const filteredTasks = useMemo(() => {
     return tasks.filter(task => {
       if (filter === 'completed' && !task.isCompleted) return false;
@@ -130,7 +126,7 @@ const Dashboard = () => {
       <Navbar user={user} />
 
       <main className="max-w-3xl mx-auto px-4 py-6">
-        {/* Stats */}
+
         <div className="grid grid-cols-3 gap-3 mb-6">
           <div className="bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg p-3 text-center">
             <p className="text-xs text-slate-500">Total</p>
@@ -152,7 +148,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Add Task */}
+
         <form
           onSubmit={addTask}
           className="grid grid-cols-1 sm:grid-cols-5 gap-2 mb-6"
@@ -185,22 +181,23 @@ const Dashboard = () => {
           <button
             type="submit"
             disabled={!newTask.trim()}
-            className={`rounded-lg text-white ${
-              newTask.trim()
-                ? 'bg-slate-800 hover:bg-slate-900'
-                : 'bg-slate-400 cursor-not-allowed'
+            className={`rounded-lg text-white font-medium
+                py-3 sm:py-2
+                text-base sm:text-sm
+                ${
+                newTask.trim()
+                  ? 'bg-slate-800 hover:bg-slate-900'
+                  : 'bg-slate-400 cursor-not-allowed'
             }`}
           >
             Add Task
           </button>
         </form>
 
-        {/* Filters */}
+
         <div className="mb-5 space-y-3">
-          {/* Status + Priority */}
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             
-            {/* Status Filter */}
             <div className="flex w-full sm:w-auto rounded-lg border overflow-hidden">
               {['all', 'pending', 'completed'].map(f => (
                 <button
@@ -217,7 +214,6 @@ const Dashboard = () => {
               ))}
             </div>
 
-            {/* Priority Filter */}
             <div className="flex flex-wrap gap-2">
               {['all', 'high', 'medium', 'low'].map(p => (
                 <button
@@ -234,7 +230,6 @@ const Dashboard = () => {
               ))}
             </div>
 
-            {/* Search */}
             <input
               placeholder="Search tasks…"
               className="w-full sm:w-56 sm:ml-auto border rounded-lg px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-slate-500"
@@ -245,7 +240,6 @@ const Dashboard = () => {
         </div>
 
 
-        {/* View Toggle */}
         <div className="flex w-full sm:w-auto mb-6 rounded-lg border overflow-hidden">
           {['list', 'week', 'month'].map(v => (
             <button
@@ -264,8 +258,6 @@ const Dashboard = () => {
           ))}
         </div>
 
-        {/* Drag & Drop Task List */}
-    
         <Suspense fallback={<div className="text-sm">Loading planner...</div>}>
           {view === 'week' && <WeekPlanner />}
           {view === 'month' && <MonthPlanner />}
@@ -298,9 +290,13 @@ const Dashboard = () => {
                 return (
                   <SortableTask key={task._id} task={task}>
                     <div
-                      className={`bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg p-3 flex justify-between ${
-                        isOverdue ? 'border-red-400 bg-red-50' : ''
-                      }`}
+                      style={{ WebkitTouchCallout: 'none' }}
+                      className={`bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg p-3 flex justify-between
+                        select-none
+                        ${
+                          isOverdue ? 'border-red-400 bg-red-50' : ''
+                        }
+                      `}
                     >
                       <div className="flex gap-3">
                         <input
