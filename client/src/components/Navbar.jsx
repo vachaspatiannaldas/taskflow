@@ -20,7 +20,7 @@ const Navbar = ({ user }) => {
           <img
             src={dark ? '/logo-light.png' : '/logo-dark.png'}
             alt="TaskFlow Logo"
-            className="h-7 sm:h-9 w-auto"
+            className="h-8 sm:h-9 w-auto"
           />
         </div>
 
